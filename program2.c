@@ -61,3 +61,12 @@ int main() {
     printf("Time taken to sort array is: %lf\n", elapsedTime);
     return 0;
 }
+
+
+/*output: 
+Enter the number of elements: 
+6000
+
+Elements of array
+(array elements)
+Time taken to sort elements = 18.980000 */

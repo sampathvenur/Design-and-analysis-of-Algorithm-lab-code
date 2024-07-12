@@ -47,3 +47,13 @@ int main()
 	printf("The total profit is %.2f\n", sum); 
 	return 0;
 }
+
+/*output: 
+Enter no of items: 4
+Enter the weights of each items: 2 1 3 2
+Enter the values of each items: 12 10 20 15
+Enter maximum volume of knapsack: 5
+Quantity of item number: 2 added is 1
+Quantity of item number: 4 added is 2
+Quantity of item number: 3 added is 2
+The total profit is 38.33 */

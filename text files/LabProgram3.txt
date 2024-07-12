@@ -1,3 +1,5 @@
+Design and implement a Program to solve discrete Knapsack and continuous Knapsack problems using greedy approximation method.
+
 #include <stdio.h>
 int main() 
 {
