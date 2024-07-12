@@ -41,3 +41,17 @@ void floyd(int w[10][10],int n)
 			for(j=1;j<=n;j++)
 				w[i][j]=min(w[i][j],w[i][k]+w[k][j]);
 }
+output: 
+Enter the number of vertices
+4
+Enter the cost matrix
+0 2 3 6
+2 0 7 999
+3 7 0 1
+6 999 1 0
+Shortest path matrix is
+0       2       3       4
+2       0       5       6
+3       5       0       1
+4       6       1       0
+Time taken is 4.000000
