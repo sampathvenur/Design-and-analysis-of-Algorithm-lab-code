@@ -1,60 +1,43 @@
 // The owner of a gourmet coffee shop wishes to mix a 10-pound bag of coffee using various types of coffee beans in such a way to produce the coffee blend at the maximum cost. The weights of the objects in the problem correspond to the quantity in pounds available of each type of coffee bean. The value of each quantity of coffee  beans is the total cost of that quantity in rupees. Apply the Knapsack algorithm to maximize the profit.
 
 #include <stdio.h>
+int v[20][20], w[20], p[20], n, max;
 
-#define MAX 20
+int max_value(int a, int b) { return (a > b) ? a : b; }
 
-int max(int a, int b) { return (a > b) ? a : b; }
+void knapsack() {
+    int i, j;
+    for (i = 0; i <= n; i++)
+        for (j = 0; j <= max; j++)
+            if (i == 0 || j == 0)
+                v[i][j] = 0;
+            else if (w[i] > j)
+                v[i][j] = v[i - 1][j];
+            else
+                v[i][j] = max_value(v[i - 1][j], v[i - 1][j - w[i]] + p[i]);
+    printf("Max profit: %d\nSubset: {", v[n][max]);
+    for (i = n, j = max; i > 0; i--)
+        if (v[i][j] != v[i - 1][j]) {
+            printf("item%d:1 ", i);
+            j -= w[i];
+        } else
+            printf("item%d:0 ", i);
+    printf("}\n");
+}
 
 int main() {
-    int n, max_capacity, i, j, w[MAX], p[MAX], v[MAX][MAX] = {0};
-
+    int i;
     printf("Enter number of items: ");
     scanf("%d", &n);
-    
     for (i = 1; i <= n; i++) {
         printf("Enter weight and profit of item %d: ", i);
         scanf("%d %d", &w[i], &p[i]);
     }
-
     printf("Enter knapsack capacity: ");
-    scanf("%d", &max_capacity);
-
-    // Fill DP table
-    for (i = 1; i <= n; i++) {
-        for (j = 1; j <= max_capacity; j++) {
-            v[i][j] = (w[i] <= j) ? max(v[i-1][j], v[i-1][j-w[i]] + p[i]) : v[i-1][j];
-        }
-    }
-
-    // Print the table
-    printf("Table:\n");
-    for (i = 0; i <= n; i++) {
-        for (j = 0; j <= max_capacity; j++) {
-            printf("%d\t", v[i][j]);
-        }
-        printf("\n");
-    }
-
-    // Print max profit
-    printf("Max profit: %d\n", v[n][max_capacity]);
-
-    // Print the subset
-    printf("Subset: {");
-    for (i = n, j = max_capacity; i > 0; i--) {
-        if (v[i][j] != v[i-1][j]) {
-            printf("item%d:1 ", i);
-            j -= w[i];
-        } else {
-            printf("item%d:0 ", i);
-        }
-    }
-    printf("}\n");
-
+    scanf("%d", &max);
+    knapsack();
     return 0;
 }
-
-
 
 /*
 Output:
