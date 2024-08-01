@@ -52,3 +52,21 @@ int max_value(int a,int b)
 {
 	return (a>b?a:b);
 }
+
+/*
+Output:
+Enter number of items: 4
+Enter weight and profit of item 1: 4 40
+Enter weight and profit of item 2: 7 42
+Enter weight and profit of item 3: 5 25
+Enter weight and profit of item 4: 3 12
+Enter knapsack capacity: 10
+Table:
+0	0	0	0	0	0	0	0	0	0	0
+0	0	0	0	40	40	40	40	40	40	40
+0	0	0	0	40	40	40	42	42	42	42
+0	0	0	0	40	40	40	42	42	65	65
+0	0	0	12	40	40	40	52	52	65	65
+Max profit: 65
+Subset: {item4:0 item3:1 item2:0 item1:1 }
+*/
